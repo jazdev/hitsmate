@@ -3,7 +3,7 @@ hitsmate
 
 Hitsmate: A simple web traffic estimator
 
-
+```
 $ tree
 .
 ├── docs
@@ -19,4 +19,4 @@ $ tree
 ├── README.md
 ├── requirements.txt
 └── setup.py
-
+```
