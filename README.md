@@ -16,7 +16,7 @@ $ tree
 │   └── test
 │       └── hitsmate_test.py
 ├── LICENSE
-├── LICENSE~
 ├── README.md
 ├── requirements.txt
 └── setup.py
+
