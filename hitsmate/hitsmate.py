@@ -14,8 +14,8 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 """
+
 # Tkinter
 try:
     import Tkinter as tk     ## Python 2.x
@@ -50,7 +50,6 @@ def main():
         The main function. 
         This function sets up the root Tkinter window.
     """
-
     # initialize root frame and run the app
     global root
     root = tk.Tk()
