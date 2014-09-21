@@ -36,3 +36,29 @@ __email__ = "jasdev@singh.am"
 __status__ = "Development"
 
 
+
+class HitsMateFrame(tk.Frame):
+    """
+        This is the base class for the program.
+    """
+    pass
+
+
+
+def main():
+    """
+        The main function. 
+        This function sets up the root Tkinter window.
+    """
+
+    # initialize root frame and run the app
+    global root
+    root = tk.Tk()
+    root.geometry("800x400+100+100")
+    app = HitsMateFrame(root)
+    root.mainloop()  
+
+
+
+if __name__ == '__main__':
+    main() 
