@@ -85,12 +85,18 @@ class HitsMateFrame(tk.Frame):
         ShowGraphsButton = tk.Button(self.parent, text = "Show Graphs", command = self.showGraphs, bg="blue", fg="white")
         ShowGraphsButton.place(x = 160, y = 280, width = 200, height = 30)
        
+        # button for future traffic prediction
+        global PredictFutureButton
+        PredictFutureButton = tk.Button(self.parent, text = "Predict Future Traffic", command = self.predictFutureTraffic, bg="blue", fg="white")
+        PredictFutureButton.place(x = 420, y = 280, width = 200, height = 30)
         
+
     def genRandomWebLogs(self):
         """
             Method for generating random web log data.
         """
         pass
+
 
     def genPredictionModel(self):
         """
@@ -98,13 +104,19 @@ class HitsMateFrame(tk.Frame):
         """
         pass
 
+
     def showGraphs(self):
         """
             Method for showing graphs.
         """
         pass
 
-    
+
+    def predictFutureTraffic(self):
+        """
+            Method for future traffic prediction.
+        """
+        pass
         
 
 
