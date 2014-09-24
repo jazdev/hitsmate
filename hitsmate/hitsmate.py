@@ -70,18 +70,28 @@ class HitsMateFrame(tk.Frame):
         TweetimentCanvas.create_text(300, 100, font=("Purisa", 20), text = "Web traffic predictor")
         TweetimentCanvas.place(x = 100, y = 40, width = 600, height = 130)
 
-        # button for twitter credentials window
+        # button for random data
         global GenRandomLogsButton
         GenRandomLogsButton = tk.Button(self.parent, text = "Generate Random Web Logs", command = self.genRandomWebLogs, bg="blue", fg="white")
         GenRandomLogsButton.place(x = 160, y = 220, width = 200, height = 30)
        
-        
+        # button for model generation
+        global GenPredictionModelButton
+        GenPredictionModelButton = tk.Button(self.parent, text = "Generate Prediction Model", command = self.genPredictionModel, bg="blue", fg="white")
+        GenPredictionModelButton.place(x = 420, y = 220, width = 200, height = 30)
+
+       
     def genRandomWebLogs(self):
         """
             Method for generating random web log data.
         """
         pass
 
+    def genPredictionModel(self):
+        """
+            Method for model generation.
+        """
+        pass
 
 
 
