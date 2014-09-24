@@ -41,7 +41,37 @@ class HitsMateFrame(tk.Frame):
     """
         This is the base class for the program.
     """
-    pass
+    # window count
+    count = 0
+
+    def __init__(self, parent):
+        """
+            Initialize the parent Frame
+        """
+        
+        tk.Frame.__init__(self, parent)            
+        self.parent = parent
+        self.initUI()
+
+
+    def initUI(self):
+        """
+            Method for initializing the root window elements. 
+
+            All root level buttons and labels are initialized here.
+        """
+
+        self.parent.title("Hitsmate: A simple web traffic estimator")
+        self.pack(fill=tk.BOTH, expand=1)
+
+        # canvas for logo
+        TweetimentCanvas = tk.Canvas(self.parent, height=130, width=600)
+        TweetimentCanvas.create_text(300, 50, font=("Purisa", 40), text = "HITSMATE")
+        TweetimentCanvas.create_text(300, 100, font=("Purisa", 20), text = "Web traffic predictor")
+        TweetimentCanvas.place(x = 100, y = 40, width = 600, height = 130)
+
+        
+
 
 
 
