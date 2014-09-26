@@ -16,6 +16,8 @@
    limitations under the License.
 """
 
+import os
+
 # Tkinter
 try:
     import Tkinter as tk     ## Python 2.x
@@ -25,6 +27,12 @@ except ImportError:
 import ttk
 import tkMessageBox
 from ttk import Frame, Style
+
+
+import scipy as sp
+from scipy.stats import gamma
+import matplotlib.pyplot as plt
+
 
 __author__ = "Jasdev Singh"
 __copyright__ = "Copyright (C) 2014 Jasdev Singh"
@@ -95,7 +103,14 @@ class HitsMateFrame(tk.Frame):
         """
             Method for generating random web log data.
         """
-        pass
+        x = sp.arange(1, 31 * 24)
+        y = sp.array(200 * (sp.sin(2 * sp.pi * x / (7 * 24))), dtype=int)
+        y += gamma.rvs(15, loc=0, scale=100, size=len(x))
+        y += 2 * sp.exp(x / 100.0)
+        y = sp.ma.array(y, mask=[y < 0])
+        print(sum(y), sum(y < 0))
+        sp.savetxt(os.path.join("hitsmate/sample_data", "sample_web_traffic.tsv"), list(zip(x, y)), delimiter="\t", fmt="%s")
+        return
 
 
     def genPredictionModel(self):
