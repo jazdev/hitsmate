@@ -17,6 +17,7 @@
 """
 
 import os
+import uuid
 
 # Tkinter
 try:
@@ -28,10 +29,14 @@ import ttk
 import tkMessageBox
 from ttk import Frame, Style
 
+# Tkintertable
+from tkintertable.Tables import TableCanvas
+from tkintertable.TableModels import TableModel
 
 import scipy as sp
 from scipy.stats import gamma
 import matplotlib.pyplot as plt
+
 
 
 __author__ = "Jasdev Singh"
@@ -51,6 +56,7 @@ class HitsMateFrame(tk.Frame):
     """
     # window count
     count = 0
+    randomWebLogsWindowOpenedFlag = False
 
     def __init__(self, parent):
         """
@@ -103,14 +109,45 @@ class HitsMateFrame(tk.Frame):
         """
             Method for generating random web log data.
         """
-        x = sp.arange(1, 31 * 24)
-        y = sp.array(200 * (sp.sin(2 * sp.pi * x / (7 * 24))), dtype=int)
-        y += gamma.rvs(15, loc=0, scale=100, size=len(x))
-        y += 2 * sp.exp(x / 100.0)
-        y = sp.ma.array(y, mask=[y < 0])
-        print(sum(y), sum(y < 0))
-        sp.savetxt(os.path.join("hitsmate/sample_data", "sample_web_traffic.tsv"), list(zip(x, y)), delimiter="\t", fmt="%s")
-        return
+
+        self.count += 1
+        if self.randomWebLogsWindowOpenedFlag == False:
+
+            self.randomWebLogsWindowOpenedFlag = True # set window opened
+            global RandomWebLogsWindow
+
+            def toggleFlag():
+                self.randomWebLogsWindowOpenedFlag = False # set window closed
+                RandomWebLogsWindow.destroy()
+
+            RandomWebLogsWindow = tk.Toplevel(self)
+            RandomWebLogsWindow.minsize(300, 500)
+            RandomWebLogsWindow.geometry("300x500+100+100")
+            RandomWebLogsWindow.title("Random web log data")
+            RandomWebLogsWindow.config(bd=5)
+            RandomWebLogsWindow.protocol("WM_DELETE_WINDOW", toggleFlag)
+
+            x = sp.arange(1, 31 * 24) # 1 month of traffic data
+            y = sp.array(200 * (sp.sin(2 * sp.pi * x / (7 * 24))), dtype=int)
+            y += gamma.rvs(15, loc=0, scale=100, size=len(x))
+            y += 2 * sp.exp(x / 100.0)
+            y = sp.ma.array(y, mask=[y < 0])
+            sp.savetxt(os.path.join("hitsmate/sample_data", "sample_web_traffic.tsv"), list(zip(x, y)), delimiter="\t", fmt="%s")
+            model = TableModel() # create a new TableModel for table data
+            table = TableCanvas(RandomWebLogsWindow, model=model, editable=False) # create a new TableCanvas for showing the table
+            table.createTableFrame()
+            tableData = {} # dictionary for storing table data
+            for k, v in list(zip(x,y)):
+                tableData[uuid.uuid4()] = {'Hour': str(k), 'Hits': str(v)}
+            model.importDict(tableData)
+            table.resizeColumn(0, 100)
+            table.resizeColumn(1, 100)
+            table.sortTable(columnName='Hour')
+            table.redrawTable()
+            
+        else:
+        	RandomWebLogsWindow.deiconify()  
+
 
 
     def genPredictionModel(self):
