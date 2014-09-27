@@ -1,7 +1,8 @@
 # Project specific
 *~
 *.*~
-/hitsmate/sample_data/
+*.tsv
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
