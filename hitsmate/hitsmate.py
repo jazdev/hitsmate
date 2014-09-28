@@ -144,7 +144,7 @@ class HitsMateFrame(tk.Frame):
             table.resizeColumn(1, 100)
             table.sortTable(columnName='Hour')
             table.redrawTable()
-            
+
         else:
         	RandomWebLogsWindow.deiconify()  
 
@@ -154,7 +154,39 @@ class HitsMateFrame(tk.Frame):
         """
             Method for model generation.
         """
-        pass
+        colors = ['g', 'r']
+        linestyles = ['-', '--']
+
+        def plot_models(x, y, models, fname):
+		    plt.clf()
+		    plt.scatter(x, y, s=10)
+		    plt.title("Last month's web traffic")
+		    plt.xlabel("Time")
+		    plt.ylabel("Hits / Hour")
+		    plt.xticks([week * 7 * 24 for week in range(10)], ['Week %i' % week for week in range(10)])
+		    mx = sp.linspace(0, x[-1], 1000)
+		    for model, style, color in zip(models, linestyles, colors):
+		        plt.plot(mx, model(mx), linestyle=style, linewidth=2, c=color)
+
+		    plt.legend(["Degree=%i" % m.order for m in models], loc="upper left")
+		    plt.autoscale(tight=True)
+		    plt.ylim(ymin=0)
+		    plt.grid(True, linestyle='-', color='0.75')
+		    plt.savefig(fname)
+		    return
+
+        data = sp.genfromtxt("hitsmate/sample_data/sample_web_traffic.tsv", delimiter="\t")
+        x = data[:, 0]
+        y = data[:, 1]
+        print("Number of invalid entries:", sp.sum(sp.isnan(y)))
+        x = x[~sp.isnan(y)]
+        y = y[~sp.isnan(y)]
+        f2 = sp.poly1d(sp.polyfit(x, y, 2))
+        f3 = sp.poly1d(sp.polyfit(x, y, 3))
+        plot_models(x, y, [f2, f3], os.path.join("hitsmate/graphs", "Curve_fit_2nd_3rd.png"))
+        tkMessageBox.showinfo("Done", "Models successfully trained. Click 'Show Graphs' to see them.", parent = self.parent)
+        return
+
 
 
     def showGraphs(self):
