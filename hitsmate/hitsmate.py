@@ -29,6 +29,9 @@ import ttk
 import tkMessageBox
 from ttk import Frame, Style
 
+# pillow
+from PIL import Image, ImageTk
+
 # Tkintertable
 from tkintertable.Tables import TableCanvas
 from tkintertable.TableModels import TableModel
@@ -57,6 +60,7 @@ class HitsMateFrame(tk.Frame):
     # window count
     count = 0
     randomWebLogsWindowOpenedFlag = False
+    graphsWindowOpenedFlag = False
 
     def __init__(self, parent):
         """
@@ -193,7 +197,29 @@ class HitsMateFrame(tk.Frame):
         """
             Method for showing graphs.
         """
-        pass
+
+        self.count += 1
+        if self.graphsWindowOpenedFlag == False:
+
+            self.graphsWindowOpenedFlag = True # set window opened
+            global GraphsWindow
+
+            def toggleFlag():
+                self.graphsWindowOpenedFlag = False # set window closed
+                GraphsWindow.destroy()
+
+            GraphsWindow = tk.Toplevel(self)
+            GraphsWindow.minsize(300, 500)
+            GraphsWindow.geometry("810x610+50+50")
+            GraphsWindow.title("Graph showing 2nd and 3rd degree curve fitted to the data")
+            GraphsWindow.config(bd=5)
+            GraphsWindow.protocol("WM_DELETE_WINDOW", toggleFlag)
+
+            graph = Image.open("hitsmate/graphs/Curve_fit_2nd_3rd.png")
+            graphPhoto = ImageTk.PhotoImage(graph)
+            graphLabel = tk.Label(GraphsWindow, image=graphPhoto)
+            graphLabel.image = graphPhoto 
+            graphLabel.place(x = 0, y = 0, width = 800, height = 600)
 
 
     def predictFutureTraffic(self):
