@@ -271,6 +271,32 @@ class HitsMateFrame(tk.Frame):
             FuturePredictionWindow.config(bd=5)
             FuturePredictionWindow.protocol("WM_DELETE_WINDOW", toggleFlag)
 
+            Label0 = tk.Label(FuturePredictionWindow, text = "Enter week number for traffic prediction : ", justify = tk.LEFT)
+            Label0.place(x = 10, y = 50, width = 300, height = 30)
+
+            Entry0 = tk.Entry(FuturePredictionWindow, bd =5)
+            Entry0.place(x=300, y=50, width=150, height=30)
+
+            Button0 = tk.Button(FuturePredictionWindow, text ="Predict Traffic!", command = self.predict2, bg="blue", fg="white")
+            Button0.place(x=300, y=100, width=150, height=30)
+
+            Label01 = tk.Label(FuturePredictionWindow, text = "At week _ the traffic will be _ hits/hour.", justify = tk.LEFT)
+            Label01.place(x = 50, y = 150, width = 300, height = 30)
+
+
+            Label1 = tk.Label(FuturePredictionWindow, text = "Enter traffic for week prediction : ", justify = tk.LEFT)
+            Label1.place(x = 10, y = 250, width = 300, height = 30)
+
+            Entry1 = tk.Entry(FuturePredictionWindow, bd =5)
+            Entry1.place(x=300, y=250, width=150, height=30)
+
+            Button1 = tk.Button(FuturePredictionWindow, text ="Predict Week!", command = self.predict2, bg="blue", fg="white")
+            Button1.place(x=300, y=300, width=150, height=30)
+
+            Label11 = tk.Label(FuturePredictionWindow, text = "The traffic will be _ hits/hour at week _.", justify = tk.LEFT)
+            Label11.place(x = 50, y = 350, width = 300, height = 30)
+
+
             with open("model.cached", "r") as cache:
                 line = cache.readline()
                 coeffs = line.split(",")
@@ -292,6 +318,16 @@ class HitsMateFrame(tk.Frame):
             FuturePredictionWindow.deiconify()  
 
 
+
+    def predict2(self):
+        pass
+
+
+
+
+    def predict3(self):
+        pass
+    
 
 def main():
     """
