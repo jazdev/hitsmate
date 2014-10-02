@@ -61,7 +61,8 @@ class HitsMateFrame(tk.Frame):
     count = 0
     randomWebLogsWindowOpenedFlag = False
     graphsWindowOpenedFlag = False
-
+    predictionWindowOpenedFlag = False
+    
 
 
     def __init__(self, parent):
@@ -245,14 +246,36 @@ class HitsMateFrame(tk.Frame):
             graphLabel.image = graphPhoto 
             graphLabel.place(x = 0, y = 0, width = 800, height = 600)
 
+        else:
+            GraphsWindow.deiconify()  
 
 
     def predictFutureTraffic(self):
         """
             Method for future traffic prediction.
         """
-        pass
-        
+        self.count += 1
+        if self.predictionWindowOpenedFlag == False:
+
+            self.predictionWindowOpenedFlag = True # set window opened
+            global FuturePredictionWindow
+
+            def toggleFlag():
+                self.predictionWindowOpenedFlag = False # set window closed
+                FuturePredictionWindow.destroy()
+
+            FuturePredictionWindow = tk.Toplevel(self)
+            FuturePredictionWindow.minsize(300, 500)
+            FuturePredictionWindow.geometry("600x400+100+100")
+            FuturePredictionWindow.title("Predict future traffic")
+            FuturePredictionWindow.config(bd=5)
+            FuturePredictionWindow.protocol("WM_DELETE_WINDOW", toggleFlag)
+
+            
+
+        else:
+            FuturePredictionWindow.deiconify()  
+
 
 
 def main():
