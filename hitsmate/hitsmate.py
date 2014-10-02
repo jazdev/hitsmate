@@ -200,7 +200,7 @@ class HitsMateFrame(tk.Frame):
             print f2
             #print str(f2[2]) + " " + str(f2[1]) + " " + str(f2[0])
             with open("model.cached", "w") as cache:
-                cache.write(str(f2[2]) + "," + str(f2[1]) + "," + str(f2[0]))
+                cache.write(str(float(f2[2])) + "," + str(float(f2[1])) + "," + str(float(f2[0])))
                 
             plot_models(x, y, [f2], os.path.join("graphs", "Curve_fit.png"))
         else:
@@ -209,7 +209,7 @@ class HitsMateFrame(tk.Frame):
             print f3
             #print str(f3[3]) + " " + str(f3[2]) + " " + str(f3[1]) + " " + str(f3[0])
             with open("model.cached", "w") as cache:
-                cache.write(str(f3[3]) + "," + str(f3[2]) + "," + str(f3[1]) + "," + str(f3[0]))
+                cache.write(str(float(f3[3])) + "," + str(float(f3[2])) + "," + str(float(f3[1])) + "," + str(float(f3[0])))
                
             plot_models(x, y, [f3], os.path.join("graphs", "Curve_fit.png"))
         
@@ -271,7 +271,22 @@ class HitsMateFrame(tk.Frame):
             FuturePredictionWindow.config(bd=5)
             FuturePredictionWindow.protocol("WM_DELETE_WINDOW", toggleFlag)
 
-            
+            with open("model.cached", "r") as cache:
+                line = cache.readline()
+                coeffs = line.split(",")
+                
+                if len(coeffs) == 3:
+                    c0 = float(coeffs[2])
+                    c1 = float(coeffs[1])
+                    c2 = float(coeffs[0])
+                    print "Cached data: " + str(c2) + " " + str(c1) + " " + str(c0)
+
+                elif len(coeffs) == 4:
+                    c0 = float(coeffs[3])
+                    c1 = float(coeffs[2])
+                    c2 = float(coeffs[1])
+                    c3 = float(coeffs[0])
+                    print "Cached data: " + str(c3) + " " + str(c2) + " " + str(c1) + " " + str(c0)
 
         else:
             FuturePredictionWindow.deiconify()  
