@@ -197,11 +197,19 @@ class HitsMateFrame(tk.Frame):
             print "Using 2nd degree model"
             f2 = sp.poly1d(fp2)
             print f2
+            #print str(f2[2]) + " " + str(f2[1]) + " " + str(f2[0])
+            with open("model.cached", "w") as cache:
+                cache.write(str(f2[2]) + "," + str(f2[1]) + "," + str(f2[0]))
+                
             plot_models(x, y, [f2], os.path.join("graphs", "Curve_fit.png"))
         else:
             print "Using 3rd degree model"
             f3 = sp.poly1d(fp3)
             print f3
+            #print str(f3[3]) + " " + str(f3[2]) + " " + str(f3[1]) + " " + str(f3[0])
+            with open("model.cached", "w") as cache:
+                cache.write(str(f3[3]) + "," + str(f3[2]) + "," + str(f3[1]) + "," + str(f3[0]))
+               
             plot_models(x, y, [f3], os.path.join("graphs", "Curve_fit.png"))
         
         tkMessageBox.showinfo("Done", "Models successfully trained. Click 'Show Graphs' to see them.", parent = self.parent)
