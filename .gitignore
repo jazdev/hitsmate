@@ -2,7 +2,9 @@
 *~
 *.*~
 *.tsv
-
+hitsmate/model.cached
+hitsmate/model.cfg
+hitsmate/model.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
