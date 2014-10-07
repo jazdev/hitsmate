@@ -65,8 +65,10 @@ class HitsMateFrame(tk.Frame):
     graphsWindowOpenedFlag = False
     predictionWindowOpenedFlag = False
     
-
+    # file paths
     SampleLogFile = "sample_data/sample_web_traffic.tsv"
+    ModelCachedFile = "model.cached"
+    ModelDegreeFile = "model.cfg"
 
     def __init__(self, parent):
         """
@@ -236,6 +238,12 @@ class HitsMateFrame(tk.Frame):
             Method for showing graphs.
         """
 
+        
+        if not os.path.isfile(self.ModelCachedFile):
+            tkMessageBox.showerror("ERROR", "No cached model found. Click 'Generate Prediction Model' to generate the model first.", parent = self.parent)
+            return
+
+
         self.count += 1
         if self.graphsWindowOpenedFlag == False:
 
@@ -268,6 +276,8 @@ class HitsMateFrame(tk.Frame):
         """
             Method for future traffic prediction.
         """
+
+
         self.count += 1
         if self.predictionWindowOpenedFlag == False:
 
