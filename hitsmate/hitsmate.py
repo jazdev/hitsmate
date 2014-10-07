@@ -101,21 +101,26 @@ class HitsMateFrame(tk.Frame):
         global GenRandomLogsButton
         GenRandomLogsButton = tk.Button(self.parent, text = "Generate Random Web Logs", command = self.genRandomWebLogs, bg="blue", fg="white")
         GenRandomLogsButton.place(x = 160, y = 220, width = 200, height = 30)
+
+        # button for selecting custom log file
+        global SelectLogFileButton
+        SelectLogFileButton = tk.Button(self.parent, text = "Select custom log file", command = self.selectCustomLogs, bg="blue", fg="white")
+        SelectLogFileButton.place(x = 420, y = 220, width = 200, height = 30)
        
         # button for model generation
         global GenPredictionModelButton
         GenPredictionModelButton = tk.Button(self.parent, text = "Generate Prediction Model", command = self.genPredictionModel, bg="blue", fg="white")
-        GenPredictionModelButton.place(x = 420, y = 220, width = 200, height = 30)
+        GenPredictionModelButton.place(x = 290, y = 280, width = 200, height = 30)
 
         # button for showing graphs
         global ShowGraphsButton
         ShowGraphsButton = tk.Button(self.parent, text = "Show Graphs", command = self.showGraphs, bg="blue", fg="white")
-        ShowGraphsButton.place(x = 160, y = 280, width = 200, height = 30)
+        ShowGraphsButton.place(x = 160, y = 340, width = 200, height = 30)
        
         # button for future traffic prediction
         global PredictFutureButton
         PredictFutureButton = tk.Button(self.parent, text = "Predict Future Traffic", command = self.predictFutureTraffic, bg="blue", fg="white")
-        PredictFutureButton.place(x = 420, y = 280, width = 200, height = 30)
+        PredictFutureButton.place(x = 420, y = 340, width = 200, height = 30)
 
 
 
@@ -368,8 +373,15 @@ class HitsMateFrame(tk.Frame):
 
 
 
-
     def blank(self):
+        pass
+
+
+
+    def selectCustomLogs(self):
+        """
+            Method for selecting a custom log file.
+        """
         pass
 
 
