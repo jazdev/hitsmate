@@ -277,6 +277,10 @@ class HitsMateFrame(tk.Frame):
             Method for future traffic prediction.
         """
 
+        if not os.path.isfile(self.ModelCachedFile):
+            tkMessageBox.showerror("ERROR", "No cached model found. Click 'Generate Prediction Model' to generate the model first.", parent = self.parent)
+            return
+
 
         self.count += 1
         if self.predictionWindowOpenedFlag == False:
