@@ -66,6 +66,7 @@ class HitsMateFrame(tk.Frame):
     predictionWindowOpenedFlag = False
     
 
+    SampleLogFile = "sample_data/sample_web_traffic.tsv"
 
     def __init__(self, parent):
         """
@@ -114,7 +115,7 @@ class HitsMateFrame(tk.Frame):
         PredictFutureButton = tk.Button(self.parent, text = "Predict Future Traffic", command = self.predictFutureTraffic, bg="blue", fg="white")
         PredictFutureButton.place(x = 420, y = 280, width = 200, height = 30)
 
-        
+
 
     def genRandomWebLogs(self):
         """
@@ -165,6 +166,12 @@ class HitsMateFrame(tk.Frame):
         """
             Method for model generation.
         """
+
+        if not os.path.isfile(self.SampleLogFile):
+            tkMessageBox.showerror("ERROR", "No log file found. Click 'Generate Random Web Logs' to generate logs.", parent = self.parent)
+            return
+
+
         colors = ['g', 'r']
         linestyles = ['-', '--']
 
@@ -344,6 +351,13 @@ class HitsMateFrame(tk.Frame):
         predicted_traffic = model(float(week) * (7 * 24))
         print predicted_traffic
         StringVar0.set("At week " + str(week) + ", the traffic will be " + str(round(predicted_traffic, 2)) + " hits/hour.")
+
+
+
+
+    def blank(self):
+        pass
+
 
 
 
