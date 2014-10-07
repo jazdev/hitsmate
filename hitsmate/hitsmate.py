@@ -19,6 +19,7 @@
 import os
 import uuid
 import pickle
+import FileDialog
 
 # Tkinter
 try:
@@ -169,12 +170,12 @@ class HitsMateFrame(tk.Frame):
 
 
 
-    def genPredictionModel(self):
+    def genPredictionModel(self, fname = None):
         """
             Method for model generation.
         """
 
-        if not os.path.isfile(self.SampleLogFile):
+        if fname == None and not os.path.isfile(self.SampleLogFile):
             tkMessageBox.showerror("ERROR", "No log file found. Click 'Generate Random Web Logs' to generate logs.", parent = self.parent)
             return
 
@@ -200,7 +201,11 @@ class HitsMateFrame(tk.Frame):
             plt.savefig(fname)
             return
 
-        data = sp.genfromtxt("sample_data/sample_web_traffic.tsv", delimiter="\t")
+        if fname == None:
+            data = sp.genfromtxt("sample_data/sample_web_traffic.tsv", delimiter="\t")
+        else:
+            data = sp.genfromtxt(fname, delimiter="\t")
+
         x = data[:, 0]
         y = data[:, 1]
         print("Number of invalid entries:", sp.sum(sp.isnan(y)))
@@ -382,7 +387,13 @@ class HitsMateFrame(tk.Frame):
         """
             Method for selecting a custom log file.
         """
-        pass
+        fdlg = FileDialog.LoadFileDialog(root, title="Choose A File")
+        fname = fdlg.go(pattern="*") # opt args: dir_or_file=os.curdir, pattern="*", default="", key=None)
+        if fname == None: # user cancelled
+            print "You must select a file."
+            return
+        print "file name : " + fname
+        self.genPredictionModel(fname)        
 
 
 
