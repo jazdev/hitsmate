@@ -29,3 +29,17 @@ hitsmate/
 ├── README.md
 └── requirements.txt
 ```
+
+* The ```hitsmate/``` directory contains the main program files.
+
+* The ```graphs/``` directory contains the generated graphs.
+
+* The ```sample_data/``` directory contains sample logs that the program can use.
+
+* ```screenshots/``` contains runtime screenshots of the program.
+
+* The ```hitsmate.py``` file is the main executable program code. We'll run this file to use the program.
+
+* The ```LICENSE``` contains important copyright references and redistribution terms.
+
+
