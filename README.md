@@ -52,3 +52,16 @@ In particular, this program requires you to have the following libraries:
 * ttk
 * tkintertable
 
+###2. Running the Program
+
+The program can be run in the following ways:
+
+* Command Line method:
+	
+	```cd hitsmate```
+	```python hitsmate.py```
+
+* Using IDLE:
+
+	Open the hitsmate.py file in IDLE IDE and press F5 to run the program
+
