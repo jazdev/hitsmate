@@ -71,6 +71,8 @@ class HitsMateFrame(tk.Frame):
     ModelCachedFile = "model.cached"
     ModelDegreeFile = "model.cfg"
 
+
+
     def __init__(self, parent):
         """
             Initialize the parent Frame
@@ -179,7 +181,6 @@ class HitsMateFrame(tk.Frame):
             tkMessageBox.showerror("ERROR", "No log file found. Click 'Generate Random Web Logs' to generate logs.", parent = self.parent)
             return
 
-
         colors = ['g', 'r']
         linestyles = ['-', '--']
 
@@ -238,7 +239,7 @@ class HitsMateFrame(tk.Frame):
                    
             plot_models(x, y, [f3], os.path.join("graphs", "Curve_fit.png"))
         
-        tkMessageBox.showinfo("Done", "Models successfully trained. Click 'Show Graphs' to see them.", parent = self.parent)
+        tkMessageBox.showinfo("Done", "Models successfully trained. Click 'Show Graphs' to see the graphs.", parent = self.parent)
         return
 
 
@@ -248,7 +249,6 @@ class HitsMateFrame(tk.Frame):
             Method for showing graphs.
         """
 
-        
         if not os.path.isfile(self.ModelCachedFile):
             tkMessageBox.showerror("ERROR", "No cached model found. Click 'Generate Prediction Model' to generate the model first.", parent = self.parent)
             return
@@ -362,6 +362,10 @@ class HitsMateFrame(tk.Frame):
 
 
     def predictWeek(self):
+        """
+            Method for predicting week from given traffic.
+        """
+
         print "Inside predictWeek"
         traffic = Entry1.get()
         predicted_week = fsolve(model - float(traffic), 800) / (7 * 24)
@@ -370,6 +374,10 @@ class HitsMateFrame(tk.Frame):
 
 
     def predictTraffic(self):
+        """
+            Method for predicting traffic for given week.
+        """
+
         print "Inside predictTraffic"
         week = Entry0.get()
         predicted_traffic = model(float(week) * (7 * 24))
@@ -379,6 +387,9 @@ class HitsMateFrame(tk.Frame):
 
 
     def blank(self):
+        """
+            Dummy method.
+        """
         pass
 
 
@@ -387,14 +398,16 @@ class HitsMateFrame(tk.Frame):
         """
             Method for selecting a custom log file.
         """
+
+        tkMessageBox.showinfo("File Info", "The file should contain tab separated data formatted like this: \nCumulative hour \\t Requests", parent = self.parent)
+        
         fdlg = FileDialog.LoadFileDialog(root, title="Choose A File")
         fname = fdlg.go(pattern="*") # opt args: dir_or_file=os.curdir, pattern="*", default="", key=None)
         if fname == None: # user cancelled
-            print "You must select a file."
+            tkMessageBox.showinfo("File Info", "You must select a file.", parent = self.parent)
             return
-        print "file name : " + fname
-        self.genPredictionModel(fname)        
 
+        self.genPredictionModel(fname)   
 
 
 
