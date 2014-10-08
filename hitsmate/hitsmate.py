@@ -49,10 +49,10 @@ __author__ = "Jasdev Singh"
 __copyright__ = "Copyright (C) 2014 Jasdev Singh"
 __credits__ = ["Jasdev Singh"]
 __license__ = "Apache"
-__version__ = "2.0"
+__version__ = "0.2"
 __maintainer__ = "Jasdev Singh"
 __email__ = "jasdev@singh.am"
-__status__ = "Development"
+__status__ = "Production"
 
 
 

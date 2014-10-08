@@ -1,4 +1,4 @@
-hitsmate
+hitsmate v0.2
 ========
 
 Developed by [Jasdev Singh](http://singh.am)
@@ -58,8 +58,10 @@ The program can be run in the following ways:
 
 * Command Line method:
 	
-	```cd hitsmate```
-	```python hitsmate.py```
+	```
+	$ cd hitsmate
+	$ python hitsmate.py
+	```
 
 * Using IDLE:
 
