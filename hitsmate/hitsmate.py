@@ -333,7 +333,7 @@ class HitsMateFrame(tk.Frame):
     def predictWeek(self):
         print "Inside predictWeek"
         traffic = Entry1.get()
-        predicted_week = fsolve(model - int(traffic), 800) / (7 * 24)
+        predicted_week = fsolve(model - float(traffic), 800) / (7 * 24)
         StringVar1.set("The traffic will be " + str(traffic) + " hits/hour at week " + str(round(predicted_week[0],2)) + ".")
 
 
@@ -341,7 +341,7 @@ class HitsMateFrame(tk.Frame):
     def predictTraffic(self):
         print "Inside predictTraffic"
         week = Entry0.get()
-        predicted_traffic = model(int(week)) * (7 * 24)
+        predicted_traffic = model(float(week) * (7 * 24))
         print predicted_traffic
         StringVar0.set("At week " + str(week) + ", the traffic will be " + str(round(predicted_traffic, 2)) + " hits/hour.")
 
