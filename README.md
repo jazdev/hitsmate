@@ -65,3 +65,10 @@ The program can be run in the following ways:
 
 	Open the hitsmate.py file in IDLE IDE and press F5 to run the program
 
+
+###3. Program Walkthrough
+
+The correct way to use this program is as follows:
+
+####a. Main Screen
+
