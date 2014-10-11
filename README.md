@@ -95,3 +95,8 @@ This window allows you to select a custom log file that you may have. The accept
 
 <img style="float: right" src="https://github.com/jazdev/hitsmate/blob/master/docs/screenshots/4.png" alt="Hitsmate: Select Custom Log File Window" />
 
+####d. Generate Prediction Model
+
+This button is used to generate the prediction model from the web logs. The prediction model is cached onto disk for faster performance.
+
+<img style="float: right" src="https://github.com/jazdev/hitsmate/blob/master/docs/screenshots/5.png" alt="Hitsmate: Generate Prediction Model Dialog" />
