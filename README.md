@@ -84,3 +84,15 @@ This window shows the randomly generated web log data. It lists the cumulative h
 
 <img style="float: right" src="https://github.com/jazdev/hitsmate/blob/master/docs/screenshots/2.png" alt="Hitsmate: Generate Random Web Logs Window" />
 
+####c. Select Custom Log File Window
+
+This window allows you to select a custom log file that you may have. The accepted format is:
+```
+	Cumulative hour  \t  Hits in that hour
+```	
+
+<img style="float: right" src="https://github.com/jazdev/hitsmate/blob/master/docs/screenshots/3.png" alt="Hitsmate: Generate Random Web Logs Window" />
+
+<img style="float: right" src="https://github.com/jazdev/hitsmate/blob/master/docs/screenshots/4.png" alt="Hitsmate: Generate Random Web Logs Window" />
+
+
