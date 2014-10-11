@@ -91,8 +91,7 @@ This window allows you to select a custom log file that you may have. The accept
 	Cumulative hour  \t  Hits in that hour
 ```	
 
-<img style="float: right" src="https://github.com/jazdev/hitsmate/blob/master/docs/screenshots/3.png" alt="Hitsmate: Generate Random Web Logs Window" />
+<img style="float: right" src="https://github.com/jazdev/hitsmate/blob/master/docs/screenshots/3.png" alt="Hitsmate: Select Custom Log File Dialog" />
 
-<img style="float: right" src="https://github.com/jazdev/hitsmate/blob/master/docs/screenshots/4.png" alt="Hitsmate: Generate Random Web Logs Window" />
-
+<img style="float: right" src="https://github.com/jazdev/hitsmate/blob/master/docs/screenshots/4.png" alt="Hitsmate: Select Custom Log File Window" />
 
