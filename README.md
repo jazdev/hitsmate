@@ -72,8 +72,15 @@ The program can be run in the following ways:
 
 The correct way to use this program is as follows:
 
-####a. Main Screen
+####a. Main Window
 
 This is the main screen of the program. It has all the options that the user can select by pressing the appropriate button. Usually, you'll want to select the ```Generate Random Web Logs``` or the ```Select custom log file``` button if this is the first time you are running the program.
 
-<img style="float: right" src="https://github.com/jazdev/hitsmate/blob/master/docs/screenshots/1.png" alt="Hitsmate: Main screen" />
+<img style="float: right" src="https://github.com/jazdev/hitsmate/blob/master/docs/screenshots/1.png" alt="Hitsmate: Main window" />
+
+####b. Generate Random Web Logs Window
+
+This window shows the randomly generated web log data. It lists the cumulative hour number and the hits received in that hour.
+
+<img style="float: right" src="https://github.com/jazdev/hitsmate/blob/master/docs/screenshots/2.png" alt="Hitsmate: Generate Random Web Logs Window" />
+
