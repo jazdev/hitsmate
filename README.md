@@ -107,3 +107,15 @@ This button is used to show the graphs. The graphs show the data points in the l
 
 <img style="float: right" src="https://github.com/jazdev/hitsmate/blob/master/docs/screenshots/6.png" alt="Hitsmate: Show Graphs Window" />
 
+####f. Predict Future Traffic Window
+
+This opens a window where you can enter the week or traffic and get future traffic or week estimates. This process uses the previously cached model for predicting the values.
+
+Predicting traffic at week number x:
+
+<img style="float: right" src="https://github.com/jazdev/hitsmate/blob/master/docs/screenshots/7.png" alt="Hitsmate: Predicting traffic at week number x" />
+
+Predicting week at which traffic will be x hits/hour:
+
+<img style="float: right" src="https://github.com/jazdev/hitsmate/blob/master/docs/screenshots/8.png" alt="Hitsmate: Predicting week at which traffic will be x hits/hour" />
+
